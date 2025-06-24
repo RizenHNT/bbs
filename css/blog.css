@@ -1,0 +1,74 @@
+/* ブログ・詳細ページのタイトル */
+.bbs-passage-title {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #2a3a5a;
+}
+
+/* 作者・日付エリア */
+.bbs-passage-authorMsg {
+    display: flex;
+    gap: 24px;
+    font-size: 0.98em;
+    color: #666;
+    margin-bottom: 8px;
+}
+.bbs-passage-date {
+    color: #888;
+}
+
+/* サブタイトル */
+.bbs-passage-subtitle {
+    font-size: 1.08em;
+    color: #3a4a6a;
+    margin-bottom: 12px;
+}
+
+/* 本文テキストブロック */
+.bbs-passage-text {
+    white-space: normal;/* テキストの折り返しを有効にする */
+    text-align: left;
+    font-size: 0.97em;
+    line-height: 1.7;
+    color: #333;
+    margin: 10px 0 18px 0;
+    padding: 8px 12px 12px 12px;
+    background-color: #f7f7f7;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    max-height: 320px;
+    overflow-y: auto;/* 縦方向のオーバーフローをスクロール可能にする */
+    word-break: break-all;/* 単語の途中で改行を許可する */
+    font-family: 'メイリオ', 'Hiragino Sans', 'Segoe UI', sans-serif;
+    border: 1px solid #ddd;/* 枠線を追加して視覚的に区切る */
+    box-sizing: border-box;
+}
+
+/* コメント入力欄 */
+.comment-input, .comment-name {
+    width: 60%;
+    padding: 7px 10px;
+    margin: 8px 8px 8px 0;
+    border: 1px solid #b6c5d9;
+    border-radius: 5px;
+    font-size: 1em;
+    background: #f9fbfd;
+    box-sizing: border-box;
+}
+
+/* コメント送信ボタン */
+.comment-btn {
+    padding: 7px 18px;
+    background: #318af7;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;/* ポインターカーソルを表示を設定することで、クリック可能であることを示す */
+    transition: background 0.15s;/* ホバー時の背景色変化をスムーズに設定 */
+}
+.comment-btn:hover {
+/* ホバー時の背景色変化 */
+    background: #1966c2;
+}

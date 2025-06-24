@@ -1,0 +1,77 @@
+/* 編集・新規作成ページのフォーム全体 */
+.content {
+    max-width: 700px;
+    min-width: 350px;
+    width: 90%;
+    padding: 48px 32px 36px 32px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.10);
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* 編集ページのタイトル */
+.title {
+    font-size: 2.2em;
+    margin: 0 0 18px 0;
+    font-weight: bold;
+    letter-spacing: 0.04em;
+}
+
+/* フォームグループ */
+.form-group {
+    margin-bottom: 22px;
+    text-align: left;
+}
+
+/* ラベル */
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #444;
+}
+
+/* テキスト入力・日付入力・テキストエリア */
+input[type="text"], input[type="date"], textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #b6c5d9;
+    border-radius: 5px;
+    font-size: 1em;/* フォントサイズを1emに設定 */
+    font-family: inherit;/* フォントファミリーを継承 */
+    box-sizing: border-box;/* ボックスサイズをボーダーボックスに設定 */
+    margin-bottom: 4px;
+    background: #f9fbfd;
+    transition: border 0.2s;/* フォーカス時の枠線変化をスムーズに */
+}
+input[type="text"]:focus, input[type="date"]:focus, textarea:focus {
+    border: 1.5px solid #318af7;
+    outline: none;
+}
+
+/* 挿入ボタンエリア */
+.insert-btns {
+    margin-bottom: 8px;
+}
+.insert-btns button {
+    margin-right: 8px;
+    padding: 4px 10px;
+    font-size: 0.95em;
+    cursor: pointer;/* ポインターカーソル */
+    background: #e6ecfa;/* 挿入ボタンの背景色 */
+    border: 1px solid #b6c5d9;/* 挿入ボタンの枠線 */
+    border-radius: 4px;/* 挿入ボタンの角を丸くする */
+    color: #1966c2;/* 挿入ボタンの文字色 */
+    transition: background 0.15s;/* 挿入ボタンのホバー時の背景色変化 */
+}
+.insert-btns button:hover {
+    background: #d0e2ff;
+}
+
+/* 編集ページのボタン（上書き用） */
+.btn {
+    min-width: 120px;
+    margin-right: 10px;
+}

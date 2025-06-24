@@ -1,0 +1,112 @@
+/* 全体ページ背景と基本フォント設定 */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'メイリオ', 'Hiragino Sans', 'Segoe UI', sans-serif;/* フォントを設定 */
+    background-color: #f7f7f7;/* ページ全体の背景色 */
+    color: #333;/* 基本文字色 */
+}
+
+
+/* トップページのコンテンツブロック */
+.content {
+    max-width: 700px;
+    min-width: 350px;
+    width: 90%;
+    padding: 48px 32px 36px 32px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.10);/* ボックスシャドウを追加 */
+    text-align: center;/* テキストを中央揃え */
+    margin-top: 40px;/* 上部マージンを設定 */
+}
+
+/* 中央配置用のflex container */
+.container {
+    display: flex;/* フレックスボックスを使用 */
+    flex-direction: column;/* 縦方向に配置 */
+    justify-content: center;/* 中央揃え */
+    align-items: center;/* 水平方向の中央揃え */
+    gap: 40px;/* 隙間を設定 */
+    min-height: 100vh;/* ビューポートの高さを100%に設定 */
+    padding: 40px 0;/* 上下のパディングを設定 */
+}
+
+/* 共通ボタンデザイン
+   サイト全体で使う基本ボタンのスタイル。青色・角丸・影付きで目立たせる。 */
+.btn {
+    display: inline-block;/*インラインブロックを設定すると、画面上でボタンが横並びになり，ブロック要素の特性を持つ */
+    width: 170px;
+    padding: 0.75em 0;
+    background: #318af7;/*背景色 */
+    color: #fff;/*文字色 */
+    border-radius: 6px;/* 角を丸くする */
+    font-size: 1.06em;
+    font-weight: 500;  
+    box-shadow: 0 2px 8px #e0e7ef;/* ボタンに影をつけて立体感を出す */
+    border: none;
+    text-decoration: none;/* テキストの下線をなしに設定 */
+    text-align: center;/* テキストを中央揃え */
+    transition: background 0.15s, box-shadow 0.15s, color 0.15s;/* ホバー時の変化をスムーズに，
+       背景色・影・文字色の変化を設定 */
+    cursor: pointer;/* ポインターカーソルを表示，クリック可能であることを示す */
+    outline: none;
+    margin-bottom: 2px;
+}
+
+/* 削除ボタンのハイライト
+   削除専用ボタンは赤色で警告を強調する */
+#deleteBtn {
+    background: #e74c3c !important;
+    color: #ffffff !important;
+}
+
+/* ボタンのホバー・フォーカス時のスタイル
+   ホバーやフォーカス時に色と影を変えて操作感を出す */
+.btn:hover,
+.btn:focus {
+    background: #1966c2;
+    color: #fff;
+    box-shadow: 0 4px 14px #b6c5d9;
+}
+
+/* テーブル全体のデザイン */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    margin-top: 10px;
+}
+
+/* テーブルのヘッダーとセルのスタイル */
+th,
+td {
+    padding: 10px 8px;
+    border: 1px solid #719fe4;
+    font-size: 1em;
+    text-align: center;
+}
+
+/* テーブルのヘッダーの背景色と文字色 */
+th {
+    background: #88a8cf;
+    color: #f4f4f4;
+    font-weight: 700;/* ヘッダーの文字を太字にする */
+    letter-spacing: 0.03em;/* ヘッダーの文字間を広げる */
+}
+
+/* テーブル内の操作ボタン */
+td a.btn {
+    width: 65px;
+    font-size: 0.97em;
+    padding: 0.38em 0;
+    margin: 0 1px;
+    box-shadow: none;
+}
+
+/* 操作ボタンのホバー・フォーカス時のスタイル */
+#bbsTable {
+    display: none;/* 初期状態では非表示 */
+}
