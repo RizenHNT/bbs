@@ -109,7 +109,7 @@ bbs/
 
 ## 作者 / Author
 
-- HUANG (HinataTakuya)
+- HUANG (Rizen)
 - Email: lixuandk@gmail.com
 
 ---
