@@ -11,7 +11,12 @@
 </head>
 
 <body>
-    <div class="container">
+    <!-- ヘッダーバー -->
+    <div class="header-bar"></div>
+    <div class="decor-bar green"></div>
+    <div class="decor-bar blue"></div>
+    <!-- メインコンテンツ -->
+    <div class="container body-padding">
         <div class="content">
             <h1 class="title">BBSホームページへようこそ！
             </h1>
@@ -21,11 +26,11 @@
                 詳細な使い方については<a href="read.php?id=1">こちら</a>をご覧ください。
             </p>
             <div class="opt">
-                <a href="create.php" class="btn">新規作成</a>
-                <a href="#" class="btn" id="viewBtn">閲覧</a>
+                <a href="new.php" class="btn">新規作成</a>
+                <a href="#" class="btn" id="viewBtn">記事の一覧</a>
             </div>
         </div>
-
+        <!-- 掲示板一覧 -->
         <div class="documentation" id="bbsTable">
             <h2>掲示板一覧</h2>
             <p>以下は現在の掲示板の一覧です。</p>
@@ -64,6 +69,7 @@
                         <?php endforeach;
                     } else { ?>
                         <tr>
+                            <!-- 投稿がない場合のメッセージ -->
                             <td colspan="5" style="text-align:center;">投稿はありません。</td>
                         </tr>
                     <?php } ?>
@@ -72,16 +78,23 @@
         </div>
     </div>
 
+
     <!-- イースターエッグ -->
     <div id="rizen-easter-egg"
         style="display:none;position:fixed;left:50%;bottom:32px;transform:translateX(-50%) scale(1);background:#318af7;color:#fff;border-radius:24px;padding:16px 32px;font-size:1.1em;box-shadow:0 4px 16px rgba(49,138,247,0.15);z-index:9999;text-align:center;transition:opacity 0.3s,transform 0.3s;opacity:0;pointer-events:none;">
         <span style="font-family:'Segoe Script','Comic Sans MS',cursive;font-size:1.1em;">✨ made by <b
                 style='color:#ffd966;'>Rizen（黄）</b> ✨</span>
     </div>
+    <!-- デコレーションバー -->
+    <div class="decor-bar green right-bottom"></div>
+    <div class="decor-bar blue right-bottom"></div>
 </body>
+
+<!-- メッセージ表示 -->
 <?php if (!empty($_GET['message'])): ?>
-<script>
-    alert("<?php echo addslashes($_GET['message']); ?>");
-</script>
+    <script>
+        alert("<?php echo addslashes($_GET['message']); ?>");
+    </script>
 <?php endif; ?>
+
 </html>

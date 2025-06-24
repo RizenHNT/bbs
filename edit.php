@@ -22,32 +22,32 @@ if ($id) {
 }
 // POSTリクエストで編集が送信された場合
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['post_id'])) {
-    $post_id = $_POST['post_id'];
-    $title = trim($_POST['title'] ?? '');
-    $author = trim($_POST['author'] ?? '');
-    $content = trim($_POST['content'] ?? '');
-    $date = trim($_POST['date'] ?? '');
-    $subtitle = trim($_POST['subtitle'] ?? '');
+    $post_id = $_POST['post_id'];// 投稿IDを取得
+    $title = trim($_POST['title'] ?? '');// タイトルを取得
+    $author = trim($_POST['author'] ?? '');// 投稿者名を取得
+    $content = trim($_POST['content'] ?? '');// 内容を取得
+    $date = trim($_POST['date'] ?? '');// 日付を取得
+    $subtitle = trim($_POST['subtitle'] ?? '');// 副タイトルを取得
 
     // 入力チェック
     if ($title === '' || $author === '' || $content === '' || $date === '') {
         $message = 'タイトル・投稿者・内容・日付は必須です。';
 
     } else {
-        foreach ($posts as &$post) {
-            if ($post['id'] == $post_id) {
-                $post['title'] = $title;
-                $post['subtitle'] = $subtitle;
-                $post['author'] = $author;
-                $post['date'] = $date;
-                $post['content'] = $content;
+        foreach ($posts as &$post) {// 投稿をループして該当の投稿を探す
+            if ($post['id'] == $post_id) {// 投稿IDが一致する場合
+                $post['title'] = $title;// タイトルを更新
+                $post['subtitle'] = $subtitle;// 副タイトルを更新
+                $post['author'] = $author;// 投稿者名を更新
+                $post['date'] = $date;// 日付を更新
+                $post['content'] = $content;// 内容を更新
                 break;
             }
         }
-        unset($post);
-        file_put_contents($dataFile, json_encode($posts, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
-        header('Location: read.php?id=' . urlencode($post_id));
-        exit;
+        unset($post);// 参照を解除
+        file_put_contents($dataFile, json_encode($posts, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));// 更新されたデータをファイルに保存
+        header('Location: read.php?id=' . urlencode($post_id));// 編集後、該当の投稿の詳細ページへリダイレクト
+        exit;// 投稿編集完了後はリダイレクト
     }
 }
 ?>
@@ -65,11 +65,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['post_id'])) {
 </head>
 
 <body>
-    <?php if (!empty($message)): ?>
-    <script>
-        alert("<?php echo addslashes($message); ?>");
-    </script>
-    <?php endif; ?>
+    <!-- ヘッダーバー -->
+    <div class="header-bar"></div>
+    <div class="decor-bar green"></div>
+    <div class="decor-bar blue"></div>
+    <!-- コンテナ -->
     <div class="container">
         <!-- コンテンツ -->
         <div class="content">
@@ -99,13 +99,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['post_id'])) {
                 </div>
                 <div class="form-group">
                     <label for="date">日付:</label>
-                    <input type="date" id="date" name="date"
-                        value="<?php
-                            $date = $target['date'] ?? '';
-                            // 日付のフォーマットを変換
-                            $date = str_replace('/', '-', $date);
-                            echo htmlspecialchars($date !== '' ? $date : date('Y-m-d'), ENT_QUOTES, 'UTF-8');
-                        ?>">
+                    <input type="date" id="date" name="date" value="<?php
+                    $date = $target['date'] ?? '';
+                    // 日付のフォーマットを変換
+                    $date = str_replace('/', '-', $date);
+                    echo htmlspecialchars($date !== '' ? $date : date('Y-m-d'), ENT_QUOTES, 'UTF-8');
+                    ?>">
                 </div>
                 <div class="form-group">
                     <label for="content">内容:</label>
@@ -113,14 +112,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['post_id'])) {
                         required><?php echo htmlspecialchars($target['content'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn">更新する</button>
-                    <a href="index.php" class="btn">戻る</a>
+                    <button type="submit" class="btn">編集する</button>
+                    <a href="index.php" class="btn">キャンセル</a>
                 </div>
             </form>
             <?php if (!$target): ?>
                 <p style="color:red;">投稿が見つかりません。</p>
-            <?php else: ?>
-                <!-- 表单内容 -->
             <?php endif; ?>
         </div>
     </div>
@@ -130,10 +127,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['post_id'])) {
         <span style="font-family:'Segoe Script','Comic Sans MS',cursive;font-size:1.1em;">✨ made by <b
                 style='color:#ffd966;'>Rizen（黄）</b> ✨</span>
     </div>
+    <!-- デコレーションバー -->
+    <div class="decor-bar green right-bottom"></div>
+    <div class="decor-bar blue right-bottom"></div>
+</div>
+
 </body>
 <?php if (!empty($_GET['message'])): ?>
-<script>
-    alert("<?php echo addslashes($_GET['message']); ?>");
-</script>
+    <script>
+        alert("<?php echo addslashes($_GET['message']); ?>");
+    </script>
 <?php endif; ?>
+
 </html>

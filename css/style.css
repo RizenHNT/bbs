@@ -110,3 +110,79 @@ td a.btn {
 #bbsTable {
     display: none;/* 初期状態では非表示 */
 }
+
+
+/* バーのスタイル */
+.header-bar {
+    width: 100vw;
+    height: 60px;
+    background: linear-gradient(90deg, rgba(168,224,99,0.7) 0%, rgba(86,171,47,0.7) 100%);
+    position: fixed;/* 固定位置にする */
+    top: 0;
+    left: 0;
+    z-index: 1; /* 確実に最前面に表示 */
+    box-shadow: 0 2px 8px rgba(86,171,47,0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(86,171,47,0.15);
+}
+
+
+.container {
+    position: relative;
+    z-index: 10; /* コンテンツをバーの上に表示 */
+}
+
+
+.body-padding {
+    padding-top: 0;
+}
+
+
+/* トップページのタイトル
+   ページのタイトルを大きく目立たせる */
+.decor-bar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 120vw;
+    height: 60px;
+    transform: skewY(-6deg);
+    opacity: 0.4;
+    z-index: 0;
+    pointer-events: none;
+}
+.decor-bar.green {
+    background: linear-gradient(90deg, #a8e063 0%, #56ab2f 100%);
+}
+.decor-bar.blue {
+    top: 80px;
+    background: linear-gradient(90deg, #338af7 0%, #56abff 100%);
+    opacity: 0.6;
+}
+
+/* 右下の装飾バー
+   ページの右下に配置される装飾的なバー */
+.decor-bar.right-bottom {
+    right: 0;
+    top: auto;
+    bottom: 0;
+    width: 120vw;
+    height: 60px;
+    transform: skewY(343deg);
+    opacity: 0.16;
+    z-index: 0;
+    pointer-events: none;
+}
+.decor-bar.green.right-bottom {
+    background: linear-gradient(90deg, #a8e063 0%, #56ab2f 100%);
+    opacity: 0.13;
+    bottom: 80px;   
+    height: 70px;   
+}
+.decor-bar.blue.right-bottom {
+    background: linear-gradient(90deg, #338af7 0%, #56abff 100%);
+    opacity: 0.10;
+    bottom: 0;
+    height: 60px;
+}

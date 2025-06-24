@@ -96,29 +96,36 @@ if (isset($_GET['message'])) {
 </head>
 
 <body>
+    <!-- ヘッダーバー -->
+    <div class="header-bar"></div>
+    <div class="decor-bar green"></div>
+    <div class="decor-bar blue"></div>
+    <!-- メインコンテンツ -->
     <div class="container">
         <div class="content">
-
             <h1 class="bbs-passage-title">
                 <?php echo htmlspecialchars($target['title'] ?? ''); ?><!-- タイトル -->
             </h1>
-
+            <!-- 投稿者情報 -->
             <div class="bbs-passage-authorMsg">
                 <p>作者: <span class="author">
                         <?php echo htmlspecialchars($target['author'] ?? ''); ?></span></p>
                 </span></p>
                 <p class="bbs-passage-date">作成日: <?php echo htmlspecialchars($target['date'] ?? ''); ?></p>
             </div>
-
+            <!-- 副タイトルと内容 -->
             <p class="bbs-passage-subtitle">
                 <?php echo htmlspecialchars($target['subtitle'] ?? ''); ?><!-- 副タイトル -->
             </p>
+            <!-- 内容 -->
             <div class="bbs-passage-text">
-                <?php echo $target['content'] ?? ''; ?><!-- 内容 -->
+                <?php echo $target['content'] ?? ''; ?>
             </div>
+            <!-- 操作ボタン -->
             <a href="index.php" class="btn">戻る</a>
             <a class="btn" id="viewBtn">コメント一覧</a>
         </div>
+        <!-- コメント一覧 -->
         <div class="documentation" id="bbsTable">
             コメント一覧：
             <table>
@@ -131,26 +138,31 @@ if (isset($_GET['message'])) {
                     </tr>
                 </thead>
                 <tbody>
-                    <?php if (empty($target['comments'])): ?><!-- コメントがない場合の表示 -->
+                    <!-- コメントがない場合の処理 -->
+                    <?php if (empty($target['comments'])): ?>
                         <tr>
                             <td colspan="4" style="text-align:center; color:#888;">コメントはありません。</td>
                         </tr>
-                    <?php else: ?><!-- コメントがある場合の表示 -->
-                        <?php foreach ($target['comments'] as $idx => $comment): ?>
+                    <?php else:
+                        foreach ($target['comments'] as $idx => $comment): ?>
                             <tr>
                                 <td><?php echo htmlspecialchars($comment['commentDate']); ?></td><!-- コメント日時 -->
                                 <td><?php echo nl2br(htmlspecialchars($comment['comment'])); ?></td><!-- コメント内容 -->
                                 <td><?php echo htmlspecialchars($comment['user']); ?></td><!-- 投稿者 -->
                                 <td>
-                                    <form action="read.php?id=<?php echo htmlspecialchars($target['id']); ?>" method="post" style="display:inline;">
-                                        <input type="hidden" name="post_id" value="<?php echo htmlspecialchars($target['id']); ?>">
+                                    <form action="read.php?id=<?php echo htmlspecialchars($target['id']); ?>" method="post"
+                                        style="display:inline;">
+                                        <input type="hidden" name="post_id"
+                                            value="<?php echo htmlspecialchars($target['id']); ?>">
                                         <input type="hidden" name="del_comment" value="<?php echo $idx; ?>">
                                         <button type="submit" class="btn" id="deleteBtn">削除</button>
                                     </form>
                                 </td>
                             </tr>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
+                            <?php
+                        endforeach;
+                    endif;
+                    ?>
                 </tbody>
             </table>
             <!-- フォームでコメントを追加 -->
@@ -159,7 +171,6 @@ if (isset($_GET['message'])) {
                 <input type="text" name="comment" placeholder="コメントを入力してください" class="comment-input" required>
                 <input type="text" name="user" placeholder="名前を入力してください" class="comment-name" required>
                 <input type="submit" class="comment-btn" value="コメントする">
-
             </form>
         </div>
     </div>
@@ -170,11 +181,15 @@ if (isset($_GET['message'])) {
         <span style="font-family:'Segoe Script','Comic Sans MS',cursive;font-size:1.1em;">✨ made by <b
                 style='color:#ffd966;'>Rizen（黄）</b> ✨</span>
     </div>
+    <!-- メッセージ表示 -->
     <?php if ($message): ?>
         <script>
             alert("<?php echo addslashes($message); ?>");
         </script>
     <?php endif; ?>
+    <!-- デコレーションバー -->
+    <div class="decor-bar green right-bottom"></div>
+    <div class="decor-bar blue right-bottom"></div>
 </body>
 
 </html>

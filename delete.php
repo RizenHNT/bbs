@@ -1,4 +1,4 @@
-<html>  
+<html>
 <?php
 $dataFile = 'data.json'; // データファイルのパス
 $posts = [];
@@ -25,6 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['post_id'])) {
 }
 
 ?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,28 +33,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['post_id'])) {
     <link rel="stylesheet" href="css/style.css">
     <script src="js/main.js"></script>
 </head>
+
 <body>
+    <!-- ヘッダーバー -->
+    <div class="header-bar"></div>
+    <div class="decor-bar green"></div>
+    <div class="decor-bar blue"></div>
+    <!-- メインコンテンツ -->
     <div class="container">
+        <!-- コンテンツ -->
         <div class="content">
+            <!-- タイトル -->
             <h1 class="title">削除確認</h1>
+            <!-- 削除確認メッセージ -->
             <p>本当にこの投稿を削除しますか？</p>
-            <form action="delete.php?id=<?php echo htmlspecialchars($_GET['id'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" method="post" id="deleteForm">
-                <input type="hidden" name="post_id" value="<?php echo htmlspecialchars($_GET['id'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
-                <button type="submit" class="btn" id="deleteBtn">削除する</button>
-                <a href="index.php" class="btn">戻る</a>
+            <!-- 削除フォーム -->
+            <form action="delete.php?id=<?php echo htmlspecialchars($_GET['id'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"
+                method="post" id="deleteForm">
+                <input type="hidden" name="post_id"
+                    value="<?php echo htmlspecialchars($_GET['id'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
+                <button type="submit" class="btn" id="deleteBtn">削除する(はい)</button>
+                <a href="index.php" class="btn">戻る（いいえ）</a>
             </form>
         </div>
     </div>
-    <!-- イースターエッグ --> <!-- イースターエッグ -->
+    <!-- イースターエッグ -->
     <div id="rizen-easter-egg"
-         style="display:none;position:fixed;left:50%;bottom:32px;transform:translateX(-50%) scale(1);background:#318af7;color:#fff;border-radius:24px;padding:16px 32px;font-size:1.1em;box-shadow:0 4px 16px rgba(49,138,247,0.15);z-index:9999;text-align:center;transition:opacity 0.3s,transform 0.3s;opacity:0;pointer-events:none;">
-        <span style="font-family:'Segoe Script','Comic Sans MS',cursive;font-size:1.1em;">✨ made by <b style='color:#ffd966;'>Rizen（黄）</b> ✨</span>
+        style="display:none;position:fixed;left:50%;bottom:32px;transform:translateX(-50%) scale(1);background:#318af7;color:#fff;border-radius:24px;padding:16px 32px;font-size:1.1em;box-shadow:0 4px 16px rgba(49,138,247,0.15);z-index:9999;text-align:center;transition:opacity 0.3s,transform 0.3s;opacity:0;pointer-events:none;">
+        <span style="font-family:'Segoe Script','Comic Sans MS',cursive;font-size:1.1em;">✨ made by <b
+                style='color:#ffd966;'>Rizen（黄）</b> ✨</span>
     </div>
-</div>
-<?php if (!empty($_GET['message'])): ?>
-<script>
-    alert("<?php echo addslashes($_GET['message']); ?>");
-</script>
-<?php endif; ?>
+    </div>
+    <!-- メッセージ表示 -->
+    <?php if (!empty($_GET['message'])): ?>
+        <script>
+            alert("<?php echo addslashes($_GET['message']); ?>");
+        </script>
+    <?php endif; ?>
+    <!-- デコレーションバー -->
+    <div class="decor-bar green right-bottom"></div>
+    <div class="decor-bar blue right-bottom"></div>
+    </div>
 </body>
+
 </html>

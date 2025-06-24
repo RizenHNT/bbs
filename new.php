@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // 入力チェック
     if ($title === '' || $author === '' || $content === '' || $date === '') {
-       header('Location: create.php?message=' . urlencode('タイトル・投稿者名・内容・日付は必須です。'));
+       header('Location: new.php?message=' . urlencode('タイトル・投稿者名・内容・日付は必須です。'));
         exit;  
     } else {
         $newPost = [
@@ -51,35 +51,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
+    <!-- ヘッダーバー -->
+    <div class="header-bar"></div>
+    <div class="decor-bar green"></div>
+    <div class="decor-bar blue"></div>
+    <!-- メインコンテンツ -->
     <div class="container">
         <div class="content">
             <h1 class="title">新規投稿</h1>
-            <form action="create.php<?php echo isset($post_id) ? '?id=' . $post_id : ''; ?>" method="post"
-                id="createForm">
+            <!-- 新規投稿フォーム -->
+            <form action="new.php<?php echo isset($post_id) ? '?id=' . $post_id : ''; ?>" method="post"
+                id="createForm">     
                 <div class="form-group">
+                    <!-- タイトル入力 -->
                     <label for="title">タイトル:</label>
                     <input type="text" id="title" name="title" required>
                 </div>
                 <div class="form-group">
+                    <!-- 副タイトル入力 -->
                     <label for="subtitle">副タイトル:</label>
                     <input type="text" id="subtitle" name="subtitle">
                 </div>
                 <div class="form-group">
+                    <!-- 投稿者名入力 -->
                     <label for="author">投稿者名:</label>
                     <input type="text" id="author" name="author" required>
                 </div>
                 <div class="form-group">
+                    <!-- 日付入力 -->
                     <label for="date">日付:</label>
                     <input type="date" id="date" name="date" value="<?php echo date('Y-m-d'); ?>">
                 </div>
                 <div class="form-group">
+                    <!-- 内容入力 -->
                     <label for="content">内容:</label>
 
                     <textarea id="content" name="content" rows="7" required></textarea>
                 </div>
                 <div class="form-group">
+                    <!-- 投稿ボタンとキャンセルボタン -->
                     <button type="submit" class="btn">投稿する</button>
-                    <a href="index.php" class="btn">戻る</a>
+                    <a href="index.php" class="btn">キャンセル</a>
                 </div>
             </form>
         </div>
@@ -89,6 +101,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         style="display:none;position:fixed;left:50%;bottom:32px;transform:translateX(-50%) scale(1);background:#318af7;color:#fff;border-radius:24px;padding:16px 32px;font-size:1.1em;box-shadow:0 4px 16px rgba(49,138,247,0.15);z-index:9999;text-align:center;transition:opacity 0.3s,transform 0.3s;opacity:0;pointer-events:none;">
         <span style="font-family:'Segoe Script','Comic Sans MS',cursive;font-size:1.1em;">✨ made by <b
                 style='color:#ffd966;'>Rizen（黄）</b> ✨</span>
+    </div>
+    <!-- デコレーションバー -->
+    <div class="decor-bar green right-bottom"></div>
+    <div class="decor-bar blue right-bottom"></div>
     </div>
 </body>
 <?php if (!empty($_GET['message'])): ?>
